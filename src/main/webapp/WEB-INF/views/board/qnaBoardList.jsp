@@ -1,5 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+  <c:set var="path" value="${pageContext.request.contextPath}" />
+
+  <!-- header -->
+  <jsp:include page="/WEB-INF/views/common/header.jsp">
+    <jsp:param name="pageTitle" value="Q&A Board" />
+  </jsp:include>
+  
 
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -11,7 +22,6 @@
   int cPage = (Integer)request.getAttribute("cPage");
 %>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
   <style>
     body { padding-top: 56px; }
     #menus{font-size:12px;}
@@ -34,9 +44,9 @@
         <section id="board-container">
           <div class="row d-flex">
             <h6 class="border-bottom border-gray pb-2 mb-0 mr-auto">&nbsp;&nbsp;Questions</h6>
-            <% if(loginMember != null){ %>
+            <%-- if(loginMember != null){ --%>
               <input type="button" value="write" class= "btn btn-outline-primary mr-3 mb-2" id="qna-add" onclick="location.href='<%=request.getContextPath() %>/board/qnaboardWrite'">
-            <%} %>
+            <%--} --%>
           </div>
 
           <table class="table table-sm" id='qna_table'>

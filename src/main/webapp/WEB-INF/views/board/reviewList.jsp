@@ -1,5 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
+  <!-- header -->
+  <jsp:include page="/WEB-INF/views/common/mypageHeader.jsp" />
+  
 
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -16,7 +25,6 @@
   int cPage = (Integer)request.getAttribute("cPage");
 %>
 
-<%@ include file="/WEB-INF/views/common/mypageHeader.jsp" %>
   <section class="py-4 subMenu-container">
 
     <!-- CSS -->
@@ -56,15 +64,15 @@
           <!-- .media-body -->
           <div class="media-body pl-3 my-0 py-0">
             <h3 class="card-title">Review list</h3>
-            <h6 class="card-subtitle text-muted">Reviews by <b><%=loginMember.getUserName() %></b></h6>
+            <h6 class="card-subtitle text-muted">Reviews by <b>${loginMember.userName}</b></h6>
             <p class="card-text">
               <small>You have visited <b id="parkingNum"></b>&nbsp; parking lots.</small>
             </p>
           </div>
           <div class="row d-flex mt-5">
-            <% if(loginMember != null){ %>
+            <%-- if(loginMember != null){ --%>
               <!-- <input type="button" value="write" class= "btn btn-sm btn-outline-primary mr-4 mb-1" id="write-add" onclick=""> -->
-            <%} %>
+            <%--} --%>
           </div>
           <!-- /.media-body -->
         </div>
@@ -90,16 +98,16 @@
               <td class="text-center"><%=r.getReviewUserHistoryNo() %> </td>
               <td class="text-center">
                 <div class="media text-muted pt-3">
-                  <% if(loginMember.getUserRenamedFilename() != null) { %>
-                  <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/<%=loginMember.getUserRenamedFilename() %>" width="32" height="32" style="border-radius: 20%; border:1px solid white;" />
-                  <% } else { %>
+                  <%-- if(loginMember.getUserRenamedFilename() != null) { --%>
+                  <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/${loginMember.userRenamedFilename }" width="32" height="32" style="border-radius: 20%; border:1px solid white;" />
+                  <%-- } else { --%>
                   <svg class="bd-placeholder-img mr-2 rounded " width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"> <title>Placeholder</title><rect width="100%" height="100%" fill="#132535" class="bg-secondary"></rect>
                     <text x="50%" y="50%" fill="#132535" dy=".3em">32x32</text>
                   </svg>
-                  <% } %>
+                  <%-- } --%>
                   <!-- <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"> -->
                   <p class="media-body pb-4 mb-0 small lh-125">
-                    <strong class="d-block text-gray-dark"><%=loginMember.getUserName() %></strong>
+                    <strong class="d-block text-gray-dark">${loginMember.userName() }</strong>
                   </p>
                 </div>
               </td>
@@ -222,7 +230,7 @@
             $.ajax({
               url: "<%=request.getContextPath()%>/history/" + mapping,
               type: "POST",
-              data: { "userCode": "<%=loginMember.getUserCode()%>" },
+              data: { "userCode": ${loginMember.userCode} },
               dataType: "JSON",
               success: function (data) {
                 var listScroll = $("#listScroll");
@@ -319,7 +327,7 @@
               type: "POST",
               url: url,
               dataType: "html",
-              data: {userCode: "<%=loginMember.getUserCode() %>",
+              data: {userCode: "${loginMember.userCode}",
                      parkingCode: parkingCode},
               success: function(data){
                 html = $('<div>').html(data);

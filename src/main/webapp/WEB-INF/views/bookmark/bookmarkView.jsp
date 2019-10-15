@@ -107,7 +107,7 @@
             $.ajax({
               url: "<%=request.getContextPath()%>/bookmark/bookmarkList",
               type: "POST",
-              data: { "userCode": "<%=loginMember.getUserCode()%>" },
+              data: { "userCode": "${loginMember.userCode}" },
               dataType: "JSON",
               success: function (data) {
                 var listScroll = $("#listScroll");

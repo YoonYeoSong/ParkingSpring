@@ -22,7 +22,7 @@
             <!-- avatar -->
             <div class="avatar-wrapper my-0 mx-3">
               <% if(loginMember.getUserRenamedFilename() != null) { %>
-              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/<%=loginMember.getUserRenamedFilename() %>" />
+              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/${loginMember.userRenamedFilename}" />
               <% } else { %>
               <img class="profile-pic" src="" />
               <% } %>

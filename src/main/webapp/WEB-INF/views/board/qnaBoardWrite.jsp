@@ -1,56 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
+  <!-- header -->
+  <jsp:include page="/WEB-INF/views/common/header.jsp">
+    <jsp:param name="pageTitle" value="Q&A - write" />
+  </jsp:include>
 
 
   <section class="py-4 container subMenu-container pt-5 mt-5">
   
     <!-- CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/avatar.css">
+    <link rel="stylesheet" href="${path }/css/avatar.css">
     
     <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     
     <!-- JAVASCRIPT -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <div class="card card-fluid">
       <h6 class="card-header">Write Q&A</h6>
-      <!-- .card-body -->
       <div class="card-body">
-          <!-- <h3 class="mr-auto text-center my-4">Information</h3> -->
         <form id="updateFrm" method="POST" >
 
           <div class="media mb-3">
             <!-- avatar -->
             <div class="avatar-wrapper my-0 mx-3">
-              <% if(loginMember.getUserRenamedFilename() != null) { %>
-              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/<%=loginMember.getUserRenamedFilename() %>" />
-              <% } else { %>
+              <%-- if(loginMember.getUserRenamedFilename() != null) { --%>
+              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/${loginMember.userRenamedFilename} " />
+              <%-- } else { --%>
               <img class="profile-pic" src="" />
-              <% } %>
+              <%-- } --%>
 
             </div>
 
             <!-- .media-body -->
             <div class="media-body pl-3">
-              <h3 class="card-title"><%=loginMember.getUserName() %>Question </h3>
+              <h3 class="card-title">${loginMember.userName} Question </h3>
               <p class="card-text">
                 <small class="card-subtitle text-muted">visited 
                 </small>
               </p>
             </div>
           </div>
-          <input type="hidden" class="form-control" name="userCode" id="userCode" value="<%=loginMember.getUserCode() %>" />
+          <input type="hidden" class="form-control" name="userCode" id="userCode" value="${loginMember.userCode}" />
 
           <!-- form row -->
           <div class="form-row">
             <label for="userName" class="col-md-3"><i class="fa fa-user">&nbsp;&nbsp;</i>UserName</label>
             <div class="col-md-9 mb-3">
-              <input type="text" class="form-control" name="userName" id="userName" value="<%=loginMember.getUserName() %>" readonly/>
+              <input type="text" class="form-control" name="userName" id="userName" value="${loginMember.userName}" readonly/>
             </div>
           </div>
           <div class="form-row">

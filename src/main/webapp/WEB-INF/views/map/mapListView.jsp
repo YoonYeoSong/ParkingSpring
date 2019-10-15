@@ -1,6 +1,7 @@
-<%@page import="com.parking.api.model.vo.Parking"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@page import="com.parking.api.model.vo.Parking"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.parking.member.model.vo.Member"%>

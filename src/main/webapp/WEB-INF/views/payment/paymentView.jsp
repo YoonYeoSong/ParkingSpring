@@ -265,10 +265,10 @@ List<Coupon> list = (List)request.getAttribute("CouponList");
                   merchant_uid : 'merchant_' + new Date().getTime(),
                   name : pName+"테스트 결제",	// order 테이블에 들어갈 주문명 혹은 주문 번호
                   amount : '100',	// 결제 금액
-                  buyer_email : '<%=loginMember.getUserEmail()%>',	// 구매자 email
-                	buyer_name :  '<%=loginMember.getUserName()%>',	// 구매자 이름
-                  buyer_tel :  '<%=loginMember.getUserPhone()%>',	// 구매자 전화번호
-                  buyer_addr :  '<%=loginMember.getUserAddr()%>',	// 구매자 주소
+                  buyer_email : '${loginMember.userEmail}',	// 구매자 email
+                	buyer_name :  '${loginMember.userName}',// 구매자 이름
+                  buyer_tel :  '${loginMember.userPhone}'// 구매자 전화번호
+                  buyer_addr :  '${loginMember.userAddr}',	// 구매자 주소
                   buyer_postcode :  '',	// 구매자 우편번호
                   m_redirect_url : '/khx/payEnd.action'	// 결제 완료 후 보낼 컨트롤러의 메소드명
               }, function(rsp) {

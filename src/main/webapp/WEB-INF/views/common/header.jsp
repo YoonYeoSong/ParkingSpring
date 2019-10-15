@@ -196,15 +196,15 @@
                 <a class="dropdown-item" href="${path}/bookmark/bookmarkView"><i class="fa fa-bookmark">&nbsp;&nbsp;</i>Bookmark</a>
                 <a class="dropdown-item" href="${path}/board/reviewList"><i class="fa fa-edit">&nbsp;&nbsp;</i>My Reviews</a>
 
-                <% if(loginMember.getUserEmail().equals("admin@com")) { %>
+                <%-- if(loginMember.getUserEmail().equals("admin@com")) { --%>
                   <a class="dropdown-item" href="<%=mypageUrl %>"><i class="fa fa-list">&nbsp;&nbsp;</i>Member List</a>
 
-                <% } else { %>
+                <%-- } else { --%>
                   <!-- <a class="dropdown-item" href="<%=mypageUrl %>"><i class="fa fa-calendar">&nbsp;&nbsp;</i>My Reservations</a>
                   <a class="dropdown-item" href="<%=mypageUrl %>"><i class="fa fa-credit-card">&nbsp;&nbsp;</i>Payment Methods</a>
                   <a class="dropdown-item" href="<%=mypageUrl %>"><i class="fa fa-won">&nbsp;&nbsp;</i>Credit Balance</a>
                   <a class="dropdown-item" href="<%=mypageUrl %>"><i class="fa fa-car">&nbsp;&nbsp;</i>My Vehicle</a> -->
-                <% } %>
+                <%-- } --%>
               <% } %>
 
               <style>

@@ -1,8 +1,14 @@
 package com.parking.member.model.vo;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor // 기본생성자도 추가
+@AllArgsConstructor
+@Data
 public class Member {
   private String userCode;
   private String userEmail;
@@ -18,6 +24,8 @@ public class Member {
   private String userSnsAccount;
   private String userOriginalFilename;
   private String userRenamedFilename;
+<<<<<<< HEAD
+=======
 
   public Member() {
     // TODO Auto-generated constructor stub
@@ -87,4 +95,5 @@ public class Member {
   public String getUserRenamedFilename() { return userRenamedFilename; } 
   public void setUserRenamedFilename(String userRenamedFilename) { this.userRenamedFilename = userRenamedFilename; } 
 
+>>>>>>> 277e85d6ed3d751c2a644b3a518a1188209818ab
 }

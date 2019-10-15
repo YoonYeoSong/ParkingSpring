@@ -1,11 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
+  <!-- header -->
+  <jsp:include page="/WEB-INF/views/common/mypageHeader.jsp" />
+    
 
 <%@ page import="com.parking.api.model.vo.Parking" %>
 <%@ page import="com.parking.history.model.vo.UserHistory" %>
 <%@ page import="com.parking.board.model.vo.Review" %>
-
-<%@ include file="/WEB-INF/views/common/mypageHeader.jsp" %>
 
 <%
   Parking parking = (Parking)request.getAttribute("parking");
@@ -41,23 +48,23 @@
           <div class="media mb-3">
             <!-- avatar -->
             <div class="avatar-wrapper my-0 mx-3">
-              <% if(loginMember.getUserRenamedFilename() != null) { %>
-              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/<%=loginMember.getUserRenamedFilename() %>" />
-              <% } else { %>
+              <%-- if(loginMember.getUserRenamedFilename() != null) { --%>
+              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/${loginMember.userRenamedFilename}" />
+              <%-- } else { --%>
               <img class="profile-pic" src="" />
-              <% } %>
+              <%-- } --%>
 
               <!-- <div class="upload-button">
                 <i class="fa fa-camera" aria-hidden="true"></i>
               </div> -->
               <!-- <input class="file-upload form-control" type="file" accept="image/*" name="new_up_file" /> -->
-              <input class="" type="hidden" name="old_up_file_ori" value="<%=loginMember.getUserOriginalFilename() %>" />
-              <input class="" type="hidden" name="old_up_file_re" value="<%=loginMember.getUserRenamedFilename() %>" />
+              <input class="" type="hidden" name="old_up_file_ori" value="${ loginMember.userOriginalFilename}" />
+              <input class="" type="hidden" name="old_up_file_re" value="${ loginMember.userRenamedFilename}" />
             </div>
 
             <!-- .media-body -->
             <div class="media-body pl-3">
-              <h4 class="card-title"><%=loginMember.getUserName() %>'s Review on '<%=parking.getParkingName()%>'</h4>
+              <h4 class="card-title">${ loginMember.userName}'s Review on '${parking.parkingName}'</h4>
               <p class="card-text">
                 <small class="card-subtitle text-muted">visited <%=userhistory.getUserHistoryParkingDate() %>.
                 </small>
@@ -71,8 +78,8 @@
           </div>
 
           <!-- form row -->
-          <input type="hidden" name="parkingCode" id="parkingCode" value="<%=parking.getParkingCode() %>" />
-          <input type="hidden" name="userCode" id="userCode" value="<%=loginMember.getUserCode() %>" />
+          <input type="hidden" name="parkingCode" id="parkingCode" value="${ parking.parkingCode}" />
+          <input type="hidden" name="userCode" id="userCode" value="${loginMember.userCode}" />
 
           <div class="form-row">
             <label for="parkingName" class="col-md-3"><i class="fa fa-map-signs">&nbsp;&nbsp;</i>Parking lot Name</label>
@@ -92,7 +99,7 @@
             <!-- /form column -->
             <!-- form column -->
             <div class="col-md-9 mb-3">
-              <input type="text" class="form-control" name="userName" id="userName" value="<%=loginMember.getUserName() %>" readonly/>
+              <input type="text" class="form-control" name="userName" id="userName" value="${loginMember.userName}" readonly/>
             </div>
             <!-- /form column -->
           </div>

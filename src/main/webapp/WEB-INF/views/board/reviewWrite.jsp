@@ -29,23 +29,23 @@
           <div class="media mb-3">
             <!-- avatar -->
             <div class="avatar-wrapper my-0 mx-3">
-              <% if(loginMember.getUserRenamedFilename() != null) { %>
-              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/<%=loginMember.getUserRenamedFilename() %>" />
-              <% } else { %>
+              <%-- if(loginMember.getUserRenamedFilename() != null) { --%>
+              <img class="profile-pic" src="<%=request.getContextPath()%>/upload/member/${loginMember.userRenamedFilename}" />
+              <%-- } else { --%>
               <img class="profile-pic" src="" />
-              <% } %>
+              <%-- } --%>
 
               <!-- <div class="upload-button">
                 <i class="fa fa-camera" aria-hidden="true"></i>
               </div> -->
               <input class="file-upload form-control" type="file" accept="image/*" name="new_up_file" />
-              <input class="" type="hidden" name="old_up_file_ori" value="<%=loginMember.getUserOriginalFilename() %>" />
-              <input class="" type="hidden" name="old_up_file_re" value="<%=loginMember.getUserRenamedFilename() %>" />
+              <input class="" type="hidden" name="old_up_file_ori" value="${loginMember.userOriginalFilename}" />
+              <input class="" type="hidden" name="old_up_file_re" value="${loginMember.getUserRenamedFilename}" />
             </div>
 
             <!-- .media-body -->
             <div class="media-body pl-3">
-              <h3 class="card-title"><%=loginMember.getUserName() %>'s Review on '<%=parking.getParkingName()%>'</h3>
+              <h3 class="card-title">${loginMember.userName}'s Review on '<%=parking.getParkingName()%>'</h3>
               <p class="card-text">
                 <small class="card-subtitle text-muted">visited <%=userhistory.getUserHistoryParkingDate() %>.
                 </small>
@@ -60,7 +60,7 @@
 
           <!-- form row -->
           <input type="hidden" name="parkingCode" id="parkingCode" value="<%=parking.getParkingCode() %>" />
-          <input type="hidden" name="userCode" id="userCode" value="<%=loginMember.getUserCode() %>" />
+          <input type="hidden" name="userCode" id="userCode" value="${loginMember.userCode}" />
 
           <div class="form-row">
             <label for="parkingName" class="col-md-3"><i class="fa fa-map-signs">&nbsp;&nbsp;</i>Parking lot Name</label>
@@ -80,7 +80,7 @@
             <!-- /form column -->
             <!-- form column -->
             <div class="col-md-9 mb-3">
-              <input type="text" class="form-control" name="userName" id="userName" value="<%=loginMember.getUserName() %>" readonly/>
+              <input type="text" class="form-control" name="userName" id="userName" value="${loginMember.userName}" readonly/>
             </div>
             <!-- /form column -->
           </div>
@@ -172,15 +172,6 @@
           location.href= "<%=request.getContextPath() %>/board/reviewList";
         })
 
-        // $('button#deleteBtn').on('click', function(){
-        //   var frm = $('form#updateFrm');
-
-        //   if(confirm("Are you sure to DELETE Your Account?")){
-        //     var url="<%=request.getContextPath() %>/member/memberDelete";
-        //     frm.attr({"action" : url});
-        //     frm.submit();
-        //   }
-        // })
       });
 
     </script>

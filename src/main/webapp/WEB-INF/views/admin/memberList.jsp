@@ -1,6 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.List,java.util.ArrayList, com.parking.member.model.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
+  <!-- header -->
+  <jsp:include page="/WEB-INF/views/common/mypageHeader.jsp"/>
+    
+  <%@ page import="java.util.List,java.util.ArrayList, com.parking.member.model.vo.Member"%>
 
 <%
   List<Member> members=(ArrayList<Member>)request.getAttribute("members");
@@ -11,7 +20,6 @@
 	String searchKeyword=(String)request.getAttribute("searchKeyword");
 %>
 
-<%@ include file="/WEB-INF/views/common/mypageHeader.jsp" %>
   <style>
     #search-user_Email{display: inline-block;}
     #search-user_Name{display: none;}
@@ -166,4 +174,4 @@
     </section>
 
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+  <jsp:include page="/WEB-INF/views/common/mypageFooter.jsp" />

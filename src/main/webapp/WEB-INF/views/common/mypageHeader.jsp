@@ -7,9 +7,11 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
   <!-- header -->
-  <jsp:include page="/WEB-INF/views/common/header.jsp">
+ <%--  <jsp:include page="/WEB-INF/views/common/header.jsp">
     <jsp:param name="pageTitle" value="My Page" />
-  </jsp:include>
+  </jsp:include> --%>
+  
+  <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
   <!-- JQUERY -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

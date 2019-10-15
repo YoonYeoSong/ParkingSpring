@@ -24,5 +24,4 @@ public class Member {
   private String userSnsAccount;
   private String userOriginalFilename;
   private String userRenamedFilename;
-
 }

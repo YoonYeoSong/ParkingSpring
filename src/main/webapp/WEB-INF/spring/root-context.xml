@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-<<<<<<< HEAD
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
   
   <!-- Root Context: defines shared resources visible to all other web components -->
   <!-- root-context.xml 은 스프링 돌아가는데 필요한거 다 담고 있다
@@ -14,45 +13,27 @@
     close 생성자를 이용해서 destroy. Spring xml 파일을 보고 생성자를 생성. 연결내용.
     DB에 필요한 데이터를 BasicDataSource객체에 값을 넣음 setter(=property) -->
 
-  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-=======
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
->>>>>>> devpc
     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
     <property name="url" value="jdbc:oracle:thin:@rclass.iptime.org:1521:xe"/>
     <property name="username" value="parking"/>
     <property name="password" value="parking1234"/>
   </bean>
-<<<<<<< HEAD
 
   <!-- Mybatis에서 SqlSession 객체를 생성하는 FactoryBean 을 springbean으로 등록 
     Mybatis Spring jar파일에 있는 객체를 씀 객체생성 멤버변수로 BasicDataSource -->
-=======
-  
->>>>>>> devpc
   <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource"/>
     <property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>
     <property name="configLocation" value="classpath:mybatis-config.xml"/>
   </bean>
 
-<<<<<<< HEAD
   <!-- SessionTemplate을 springbean으로 등록하여 활용 -->
   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
     <constructor-arg index="0" ref="sqlSessionFactoryBean"/>
   </bean>
       
-=======
-		
-<!-- SessionTemplate을 springbean으로 등록하여 활용 -->
-  <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-    <constructor-arg index="0" ref="sqlSessionFactoryBean"/>
-  </bean>
 	
->>>>>>> devpc
 </beans>

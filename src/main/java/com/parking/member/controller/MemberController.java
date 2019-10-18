@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.http.Cookie;
@@ -45,6 +48,7 @@ public class MemberController {
   private BCryptPasswordEncoder pwEncoder; // to encode userpw
   
 
+  //active account : update userverified =1
   @RequestMapping("/emailverification")
   public ModelAndView accountActivation(HttpServletRequest request) {
 
@@ -341,7 +345,6 @@ public class MemberController {
       msg = "Failed to Delete Account...";
       loc = "/member/memberUpdate";
     }
-
 
     if(!status.isComplete()) //check if session is closed
       status.setComplete(); //httpsessison.invalidate()와 같은기능

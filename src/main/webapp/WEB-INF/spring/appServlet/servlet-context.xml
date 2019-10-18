@@ -26,14 +26,14 @@
   <!-- 인터셉터 등록하기 -->
   <interceptors>
     <interceptor>
-      <!-- ** 전체에 interceptor 적용하여 log 찍음 -->
-      <!-- <mapping path="/**" /> -->
-      <!-- member만 interceptor 적용하여 log 찍도록 -->
-      <!-- [2019-10-14 09:15:22] DEBUG: com.kh.spring.common.interceptor.LoggerInterceptor.preHandle(LoggerInterceptor.java:19) - ======================start====================== -->
-      <!-- [2019-10-14 09:15:22] DEBUG: com.kh.spring.common.interceptor.LoggerInterceptor.preHandle(LoggerInterceptor.java:20) - /spring/member/memberEnroll.do -->
+      <!-- ** 전체에 interceptor 적용하여 log 찍음 
+      <mapping path="/**" />
+      member만 interceptor 적용하여 log 찍도록
+      [2019-10-14 09:15:22] DEBUG: com.kh.spring.common.interceptor.LoggerInterceptor.preHandle(LoggerInterceptor.java:19) - ======================start======================
+      [2019-10-14 09:15:22] DEBUG: com.kh.spring.common.interceptor.LoggerInterceptor.preHandle(LoggerInterceptor.java:20) - /spring/member/memberEnroll.do
+      -->
 
       <!-- exclude mapping -->
-
       <mapping path="/member/*" />
       <exclude-mapping path="/member/*"/>
       <!-- <mapping path="/board/*" /> -->

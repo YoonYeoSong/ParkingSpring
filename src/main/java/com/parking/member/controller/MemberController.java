@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.parking.api.model.service.ParkingApiService;
+import com.parking.api.model.service.ParkingApiServiceImpl;
 import com.parking.api.model.vo.Coupon;
 import com.parking.common.api.CouponCreate;
 import com.parking.member.model.service.MemberService;
@@ -282,30 +283,30 @@ public class MemberController {
 	
 	  String msg = result > 0? "Hello "+m.getUserName() + ". Please check your email to activate your account!" : "Sign up Failed!";
 	  String loc = "/";
-	  if(result >0)
-    {
-        //쿠폰생성 잠시사용
-         int resultCoupon = 0;
-         CouponCreate cc = new CouponCreate();
-         Set<Coupon> set = new HashSet<Coupon>();
-         Coupon c= new Coupon();
-         Iterator<Coupon> it = set.iterator();
-         
-         ParkingApiService service = new ParkingApiService();
-         while(it.hasNext())
-         {
-            Coupon obj = it.next();
-            c.setUserCode(m.getUserCode());
-            c.setDiscountRate(10);
-            c.setDuration(1);
-            c.setExpiredYn(0);
-         }
-         resultCoupon = service.insertCoupon(c);
-         
-         if(result > 0)
-            System.out.println("쿠폰등록완료");
-    }
-	  
+//	  if(result >0)
+//    {
+//        //쿠폰생성 잠시사용
+//         int resultCoupon = 0;
+//         CouponCreate cc = new CouponCreate();
+//         Set<Coupon> set = new HashSet<Coupon>();
+//         Coupon c= new Coupon();
+//         Iterator<Coupon> it = set.iterator();
+//         
+//         ParkingApiService service = new ParkingApiServiceImpl();
+//         while(it.hasNext())
+//         {
+//            Coupon obj = it.next();
+//            c.setUserCode(m.getUserCode());
+//            c.setDiscountRate(10);
+//            c.setDuration(1);
+//            c.setExpiredYn(0);
+//         }
+//         resultCoupon = service.insertCoupon(c);
+//         
+//         if(result > 0)
+//            System.out.println("쿠폰등록완료");
+//    }
+//	  
 	  ModelAndView mv = new ModelAndView();
 	  mv.addObject("msg", msg);
 	  mv.addObject("loc", loc);

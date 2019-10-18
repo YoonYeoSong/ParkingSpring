@@ -33,9 +33,9 @@
       <!-- [2019-10-14 09:15:22] DEBUG: com.kh.spring.common.interceptor.LoggerInterceptor.preHandle(LoggerInterceptor.java:20) - /spring/member/memberEnroll.do -->
 
       <!-- exclude mapping -->
-      <!-- <exclude-mapping path="/member/*" /> -->
 
       <mapping path="/member/*" />
+      <exclude-mapping path="/member/*"/>
       <!-- <mapping path="/board/*" /> -->
       <beans:bean id="loggerInterceptor" class="com.parking.common.interceptor.LoggerInterceptor" />
     </interceptor>

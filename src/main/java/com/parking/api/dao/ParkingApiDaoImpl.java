@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Repository;
 
 import com.parking.api.model.vo.Coupon;
 import com.parking.api.model.vo.Parking;
+import com.parking.api.model.vo.ParkingOwner;
+import com.parking.api.model.vo.ParkingSeoul;
 import com.parking.api.model.vo.ParkingSlot;
 import com.parking.member.model.vo.Member;
 
@@ -29,6 +32,19 @@ public class ParkingApiDaoImpl implements ParkingApiDao {
 		// TODO Auto-generated method stub
 		return session.selectList("parking.selectParkingSlotList");
 	}
+	
+	@Override
+	public int insertparkingOwner(SqlSessionTemplate session, ParkingOwner p) {
+		// TODO Auto-generated method stub
+		return session.insert("parking.insertparkingOwner", p);
+	}
+	
+	@Override
+	public int insertParkingSeoul(SqlSessionTemplate session, ParkingSeoul p) {
+		
+		return session.insert("parking.insertParkingSeoul", p);
+	}
+	
 	
 //	private Properties prop = new Properties();
 //	

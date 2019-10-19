@@ -127,13 +127,12 @@
 
               var frm = $('<form>').attr({"action": "${path}/member/snsAutoLogin.do",
                                           "method": "POST", });
-              var input1 = $('<input>').attr({"name": "userEmail", "value": snsEmail});
+              var input1 = $('<input>').attr({"value": snsEmail, "name": "userEmail"});
               frm.append(input1);
-              frm.append(input2);
               $(document.body).append(frm);
               frm.submit();
               // location.href="${path}/member/MemberEmailcheck?userEmail=" + snsEmail 
-              //                 + "&snsAccount=" + snsAccount;
+              //             + "&snsAccount=" + snsAccount;
             }else{
               //modal
               var accountType =  snsEmail.substring(snsEmail.lastIndexOf("@") +1,

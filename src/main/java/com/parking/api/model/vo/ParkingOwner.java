@@ -7,11 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ParkingSlot {
+public class ParkingOwner {
+
 	private String ownerBusinessNo;
 	private String ownerParkingCode;
-	private String slotUserCode;
-	private String slotBeginTime;
-	private String slotEndTime;
-	
 }

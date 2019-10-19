@@ -3,6 +3,7 @@ package com.parking.api.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import com.parking.api.dao.ParkingApiDao;
 import com.parking.api.dao.ParkingApiDaoImpl;
 import com.parking.api.model.vo.Coupon;
 import com.parking.api.model.vo.Parking;
+import com.parking.api.model.vo.ParkingOwner;
+import com.parking.api.model.vo.ParkingSeoul;
 import com.parking.api.model.vo.ParkingSlot;
 import com.parking.common.api.ParseJsonSeoulParking;
 import com.sun.org.apache.bcel.internal.generic.CPInstruction;
@@ -45,6 +48,49 @@ public class ParkingApiServiceImpl implements ParkingApiService {
 	public List<ParkingSlot> selectParkingSlotList() {
 		
 		return dao.selectParkingSlotList(session);
+	}
+	
+	
+	// owner 테이블 
+	@Override
+	public int insertparkingOwner(List<Parking> list) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		int count = 0;
+		ParkingOwner p = null;
+		for(int i = 0; i < list.size(); i++)
+		{					
+			p = new ParkingOwner();
+			p.setOwnerBusinessNo("p"+list.get(i).getParkingCode());
+			p.setOwnerParkingCode(list.get(i).getParkingCode());
+			
+			dao.insertparkingOwner(session, p);
+			count++;
+			
+		}
+		
+		
+
+		System.out.println("count : "+  count);
+		System.out.println("list size : "+ list.size());
+		
+		return 1;
+	}
+	
+	@Override
+	public int insertParkingSeoul(List<Parking> list) {
+		int result = 0;
+		int count = 0;
+		ParkingSeoul p = null;
+		
+		for(int i = 0; i < list.size(); i++)
+		{	
+			p = new ParkingSeoul(list.get(i).getParkingCode(), list.get(i).getAddr(), list.get(i).getParkingName(), list.get(i).getLatitude(), list.get(i).getLongitude());
+			
+			dao.insertParkingSeoul(session, p);
+			count++;
+		}
+		return 1;
 	}
 	
 	

@@ -143,7 +143,9 @@ public class MemberController {
     service.updateLoginDate(loginMember);
 
     session.setAttribute("loginMember", loginMember);
-    mv.setViewName("/");
+    mv.addObject("msg", "SNS user login successful!");
+    mv.addObject("loc", "/");
+    mv.setViewName("common/msg");
 
     return mv;
   }
